@@ -4,14 +4,19 @@ import UiDiscussParagraph from "../UiDiscussParagraph"
 import TeamUiParagraph from '../TeamUiParagraph'
 import MessageImage from "../MessageImage" 
 import MessageCount from "../MessageCount"
+import ProfilePicture from "../ProfilePicture"
+import ProfileName from "../ProfileName"
+import ApproveButton from "../ApproveButton"
 
 import {PostCardListItem,MessageContainer} from './styledComponents'
 
 
 const EachPostCard = props => {
     const {postDetails} = props 
-    const {title,postContent,reactions} = postDetails
+    console.log(postDetails)
+    const {title,postContent,reactions,postedBy} = postDetails
     const {reactionsCount} = reactions
+    const {profilePic,username} = postedBy
     return (
         <PostCardListItem>
             <PostCardTitle title={title}/>  {/*Card Title Component */}    
@@ -26,6 +31,13 @@ const EachPostCard = props => {
                     <MessageImage/>
                     <MessageCount count={reactionsCount} />
                 </MessageContainer>
+            </MessageContainer>
+            <MessageContainer messageCategory>
+                <MessageContainer>
+                    <ProfilePicture profilePic={profilePic}/>
+                    <ProfileName username={username} />
+                </MessageContainer>
+                <ApproveButton/>
             </MessageContainer>
         </PostCardListItem>
     ) 

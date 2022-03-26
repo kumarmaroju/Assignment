@@ -8,4 +8,5 @@ display:flex;
 justify-content:center;
 align-items:center;
 border-radius:4px;
+margin-left:8px;
 `
