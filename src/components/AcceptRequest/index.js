@@ -64,6 +64,7 @@ class AcceptRequest extends Component{
                            return <EachPostCard key={postId} postDetails={eachItem}/>
                        })}
                    </AcceptRequestUnorderedListContainer>
+                   <h1>HELLO</h1>
                 </div>  
             </AcceptRequestMainContainer>
         )
