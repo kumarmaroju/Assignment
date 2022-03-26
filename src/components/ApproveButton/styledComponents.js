@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const ApproveButtonStyles = styled.button`
-background-color:blue;
+background-color:#0b69ff;
 color:#ffffff;
 border-width:0px;
-padding-left:6px;
-padding-top:5px;
-padding-bottom:5px;
-padding-right:6px;
+padding-left:8px;
+padding-top:6px;
+padding-bottom:6px;
+padding-right:8px;
 cursor:pointer;
 border-radius:4px;
 `
