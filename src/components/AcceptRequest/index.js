@@ -2,9 +2,11 @@ import {Component} from 'react'
 
 import SectionOne from '../SectionOne'
 import SectionTwo from '../SectionTwo'
+import ChangeSectionsButton from '../ChangeSectionButton'
+import { AcceptRequestMainContainer } from './styledComponents'
 
 class AcceptRequest extends Component{
-    state = {acceptRequestCardDetails: [], changeSections: false}
+    state = {acceptRequestCardDetails: [], changeSections: true}
 
     componentDidMount(){
         this.getMakeApi()
@@ -47,12 +49,21 @@ class AcceptRequest extends Component{
         }
     }
 
+    onChangeSectionView = changeSection => {
+        this.setState({changeSections: changeSection})
+   
+    }
+
     render(){
         const {acceptRequestCardDetails, changeSections} = this.state 
+        const changeSectionsBtnContent = changeSections ? "Next  >" : "<  Back"
         return(
-            changeSections ? 
-            <SectionOne acceptRequestCardDetails= {acceptRequestCardDetails}/> : 
-            <SectionTwo />
+            <AcceptRequestMainContainer>
+                <ChangeSectionsButton onChangeSectionView={this.onChangeSectionView} changeSections= {changeSections}>{changeSectionsBtnContent}</ChangeSectionsButton>
+                {changeSections ? 
+                <SectionOne acceptRequestCardDetails= {acceptRequestCardDetails} /> : 
+                <SectionTwo />}
+            </AcceptRequestMainContainer>
         )
     }
 }
