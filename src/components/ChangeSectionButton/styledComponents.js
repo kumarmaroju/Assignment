@@ -11,5 +11,6 @@ padding-right:8px;
 cursor:pointer;
 border-radius:4px;
 margin-top:10px;
-align-self:center;
+margin-right:10px;
+align-self:flex-end;
 `

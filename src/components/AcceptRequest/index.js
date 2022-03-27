@@ -17,8 +17,8 @@ class AcceptRequest extends Component{
         const options = {
             method:"GET",
             headers: {
-                'Content-Type': 'application/json'
-            }
+		'Content-Type': 'application/json',
+           }
         }
 
         const response = await fetch(url,options)
@@ -27,6 +27,7 @@ class AcceptRequest extends Component{
             const fetchedData = await response.json()
             const updateFetchedDetails = fetchedData.map(eachOne => ({
                 postId: eachOne.post_id ,
+                isReacted: eachOne.is_reacted,
                 title: eachOne.title,
                 commentsCount: eachOne.comments_count ,
                 postContent: eachOne.post_content ,
@@ -54,6 +55,15 @@ class AcceptRequest extends Component{
    
     }
 
+    onClickApprove = postId => {
+        this.setState(prevState => ({acceptRequestCardDetails: prevState.acceptRequestCardDetails.map(eachItem => {
+            if(eachItem.postId  === postId){
+                return {...eachItem, isReacted: !eachItem.isReacted}
+            }
+        return eachItem
+        })}))
+    }
+
     render(){
         const {acceptRequestCardDetails, changeSections} = this.state 
         const changeSectionsBtnContent = changeSections ? "Next  >" : "<  Back"
@@ -61,7 +71,7 @@ class AcceptRequest extends Component{
             <AcceptRequestMainContainer>
                 <ChangeSectionsButton onChangeSectionView={this.onChangeSectionView} changeSections= {changeSections}>{changeSectionsBtnContent}</ChangeSectionsButton>
                 {changeSections ? 
-                <SectionOne acceptRequestCardDetails= {acceptRequestCardDetails} /> : 
+                <SectionOne acceptRequestCardDetails= {acceptRequestCardDetails}  onClickApprove={this.onClickApprove} /> : 
                 <SectionTwo />}
             </AcceptRequestMainContainer>
         )

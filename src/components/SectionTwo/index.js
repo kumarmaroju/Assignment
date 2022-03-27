@@ -1,3 +1,8 @@
-const SectionTwo = () => <h1>HELLO</h1>
+import ObservationAssignHeading from '../ObservationAssignHeading'
 
+const SectionTwo = () => (
+    <div>
+        <ObservationAssignHeading/>
+    </div>
+)
 export default SectionTwo

@@ -2,11 +2,11 @@ import {AcceptRequestMainContainer,AcceptRequestUnorderedListContainer} from "./
 
 import AcceptRequestSideBar from '../AcceptRequestSideBar'
 import AcceptRequestMainHeading from "../AcceptRequestMainHeading"
-import ChangeSectionsButton from "../ChangeSectionButton"
 import EachPostCard from '../EachPostCard'
 
 const SectionOne = props => {
-    const {acceptRequestCardDetails,onChangeSectionView,changeSections} = props
+    const {acceptRequestCardDetails, onClickApprove} = props
+
     return (
         <AcceptRequestMainContainer>                   {/*div Container*/}
         <AcceptRequestSideBar/>                         {/*Side Bar*/}
@@ -17,7 +17,7 @@ const SectionOne = props => {
            <AcceptRequestUnorderedListContainer>
                {acceptRequestCardDetails.map(eachItem => {
                    const {postId} = eachItem 
-                   return <EachPostCard key={postId} postDetails={eachItem}/>
+                   return <EachPostCard key={postId} postDetails={eachItem}  onClickApprove={onClickApprove}/>
                })}
            </AcceptRequestUnorderedListContainer>
         </div>

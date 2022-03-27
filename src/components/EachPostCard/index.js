@@ -12,10 +12,12 @@ import {PostCardListItem,MessageContainer} from './styledComponents'
 
 
 const EachPostCard = props => {
-    const {postDetails} = props 
-    console.log(postDetails)
-    const {title,postContent,commentsCount,postedBy} = postDetails
+    const {postDetails,onClickApprove} = props 
+    const {title,postContent,commentsCount,postedBy,isReacted,postId} = postDetails
     const {profilePic,username} = postedBy
+
+    const isApprove = () => onClickApprove(postId)
+
     return (
         <PostCardListItem>
             <PostCardTitle title={title}/>  {/*Card Title Component */}    
@@ -33,10 +35,10 @@ const EachPostCard = props => {
             </MessageContainer>
             <MessageContainer messageCategory>
                 <MessageContainer>
-                    <ProfilePicture profilePic={profilePic}/>
+                    <ProfilePicture profilePic={profilePic} username={username}/>
                     <ProfileName username={username} />
                 </MessageContainer>
-                <ApproveButton/>
+                <ApproveButton isReacted={isReacted} isApprove={isApprove}/>
             </MessageContainer>
         </PostCardListItem>
     ) 
