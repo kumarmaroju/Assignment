@@ -1,14 +1,10 @@
 import {Component} from 'react'
 
-import {AcceptRequestMainContainer,AcceptRequestUnorderedListContainer} from "./styledComponents"
-
-import AcceptRequestSideBar from '../AcceptRequestSideBar'
-import AcceptRequestMainHeading from "../AcceptRequestMainHeading"
-import EachPostCard from '../EachPostCard'
-
+import SectionOne from '../SectionOne'
+import SectionTwo from '../SectionTwo'
 
 class AcceptRequest extends Component{
-    state = {acceptRequestCardDetails: []}
+    state = {acceptRequestCardDetails: [], changeSections: false}
 
     componentDidMount(){
         this.getMakeApi()
@@ -52,20 +48,11 @@ class AcceptRequest extends Component{
     }
 
     render(){
-        const {acceptRequestCardDetails} = this.state 
+        const {acceptRequestCardDetails, changeSections} = this.state 
         return(
-             <AcceptRequestMainContainer>                   {/*div Container*/}
-                <AcceptRequestSideBar/>                     {/*Side Bar*/}
-                <div>                    
-                   <AcceptRequestMainHeading/>              {/*Page Main Heading */}
-                   <AcceptRequestUnorderedListContainer>
-                       {acceptRequestCardDetails.map(eachItem => {
-                           const {postId} = eachItem 
-                           return <EachPostCard key={postId} postDetails={eachItem}/>
-                       })}
-                   </AcceptRequestUnorderedListContainer>
-                </div>  
-            </AcceptRequestMainContainer>
+            changeSections ? 
+            <SectionOne acceptRequestCardDetails= {acceptRequestCardDetails}/> : 
+            <SectionTwo />
         )
     }
 }

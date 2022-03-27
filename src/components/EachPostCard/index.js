@@ -14,8 +14,7 @@ import {PostCardListItem,MessageContainer} from './styledComponents'
 const EachPostCard = props => {
     const {postDetails} = props 
     console.log(postDetails)
-    const {title,postContent,reactions,postedBy} = postDetails
-    const {reactionsCount} = reactions
+    const {title,postContent,commentsCount,postedBy} = postDetails
     const {profilePic,username} = postedBy
     return (
         <PostCardListItem>
@@ -29,7 +28,7 @@ const EachPostCard = props => {
                 
                 <MessageContainer>
                     <MessageImage/>
-                    <MessageCount count={reactionsCount} />
+                    <MessageCount count={commentsCount} />
                 </MessageContainer>
             </MessageContainer>
             <MessageContainer messageCategory>
